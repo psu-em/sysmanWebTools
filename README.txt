@@ -49,6 +49,12 @@ development = True
 """"""""""""""
 The encryptedstring contains the GenerateEncryptedString() using salt and passphrase. This can be generated in the pysysmantools.ipynb.
 
+Create SSL certificates for your server and put them into nginx/ssl/
+
+Rename the nginx/example_default.conf to nginx/default.conf and update the MYSERVER.COM & SERVER_IP.
+
+Rename the example_docker-compose.yml to docker-compose.yml and update MYSERVER.COM.
+
 To build the Docker container, cd into the repo and run 'sudo ./start.sh'
 
 Logs output to the Logs folder
@@ -57,14 +63,6 @@ To enable debug mode, forcing the tool to post to the 'SysMan API Test' yammer g
 
     [codedefaults]
     development = True
-
-After updating the code, run the following to recreate the Docker container and image:
-
-    docker stop publishsoftware ; docker rm publishsoftware ; docker rmi publishsoftware ; bash start.sh
-
-You can get the logs for the python tool using Docker exec:
-
-    docker exec publishsoftware tail -1000 -f /tmp/publishSoftware.log
 
 To get any errors with the Python code that are not in the python logs, use:
 
@@ -84,10 +82,11 @@ Occasinally, the network seems to reject api requests due to traffic overloads. 
 
     requests.exceptions.SSLError: HTTPSConnectionPool(host='bigfix.server', port=52311): Max retries exceeded with url: /api/query?relevance=(name%20of%20site%20of%20it,%20type%20of%20it,%20modification%20time%20of%20it,%20name%20of%20it,%20id%20of%20it)%20of%20bes%20fixlets%20whose%20(name%20of%20site%20of%20it%20contains%20%22SysManDev%22%20and%20(modification%20time%20of%20it%20%3E%20now-24*hour))%0A (Caused by SSLError(SSLError(1, '[SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:2309)'),))
 
-
+## Future Deveopment?
 Database Design
-Store which tasks are published, when, family name, site published to, security update, self-service target, 
+- Store which tasks are published, when, family name, site published to, security update, self-service target, 
 
-How may tasks are published each day, each week, month.
-How many tasks are securtiy updates
-Tasks to offer to self-service automatically
+Reporting
+- How may tasks are published each day, each week, month.
+- How many tasks are securtiy updates
+- Tasks to offer to self-service automatically

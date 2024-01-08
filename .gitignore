@@ -5,4 +5,6 @@ besapi.conf
 __pycache__
 logs/*
 *.log
+nginx/ssl/*
+nginx/default.conf
 app/pysysmantools.ipynb
