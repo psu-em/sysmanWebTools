@@ -1,0 +1,8 @@
+supervisord.pid
+*.DS_Store
+*.pyc
+besapi.conf
+__pycache__
+logs/*
+*.log
+app/pysysmantools.ipynb
